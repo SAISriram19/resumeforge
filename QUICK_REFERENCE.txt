@@ -1,0 +1,83 @@
+╔══════════════════════════════════════════════════════════════╗
+║                  ResumeForge - Quick Reference               ║
+╚══════════════════════════════════════════════════════════════╝
+
+📍 PROJECT STATUS: 95% Complete - Just needs service key!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔑 WHAT YOU NEED TO DO NOW (2 minutes):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Get Supabase Service Key:
+   → Go to: supabase.com/dashboard/project/gyviexlghhgflpoiktml/settings/api
+   → Copy the "service_role" key (NOT anon key)
+   → Paste in: server/.env
+   → Line: SUPABASE_SERVICE_KEY=paste_here
+
+2. Run Database Schema:
+   → Go to: supabase.com/dashboard/project/gyviexlghhgflpoiktml/editor
+   → Click "SQL Editor" → "New query"
+   → Copy contents of: supabase_schema.sql
+   → Paste and Run
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 HOW TO START THE APP:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Option A - Use Batch File (Easiest):
+   → Double-click: start-dev.bat
+   → Opens 2 terminals automatically
+
+Option B - Manual:
+   Terminal 1: cd server && npm start
+   Terminal 2: cd client && npm run dev
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌐 ACCESS THE APP:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Frontend: http://localhost:5174
+Backend:  http://localhost:3001
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ ALREADY CONFIGURED:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ Firebase Auth (your credentials)
+✓ Gemini API (your key)
+✓ Supabase URL (client & server)
+✓ Supabase Anon Key (client)
+✓ Tailwind CSS (fixed PostCSS issue)
+✓ All dependencies installed
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📁 HELPFUL FILES:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+FIXED_AND_READY.md  → Current status & what to do
+GET_SERVICE_KEY.md  → How to get service key
+START.md            → Detailed startup guide
+SETUP.md            → Full setup documentation
+supabase_schema.sql → Database tables to run
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 FEATURES READY:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ Auth (Email + Google)
+✓ Profile Builder (Summary, Skills, Education, Experience)
+✓ RAG-powered Resume Generation
+✓ Job Description Parsing
+✓ PDF Export
+✓ Black Minimalist UI
+✓ Smooth Animations
+✓ Resume History
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⏱️  Time to Complete: ~5 minutes total
+    → 2 min: Get service key
+    → 1 min: Run SQL schema
+    → 2 min: Start servers & test
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

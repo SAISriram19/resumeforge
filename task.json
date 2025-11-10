@@ -1,0 +1,46 @@
+{
+  "prompt_template": {
+    "version": "1.0",
+    "description": "Structured JSON prompt for building a RAG-based resume builder app. Uses Gemini API for generation/parsing, Firebase for auth, Supabase for storage. Focus: Minimalist black-palette UI, smooth transitions, no icons/fancy elements.",
+    "structure": {
+      "project": {
+        "name": "ResumeForge",
+        "type": "web_app",
+        "goal": "A clean, RAG-powered resume builder where users build profiles from career details or parsed uploads, then generate tailored resumes from job descriptions using Gemini. Auth via Firebase, store in Supabase.",
+        "target_audience": "Job seekers needing quick, JD-matched resumes without bloat.",
+        "key_features": [
+          "Firebase Auth: Email/password + Google OAuth login/signup.",
+          "Profile Builder: Top-level sections for Summary (textarea, 3-4 sentences), Global Skills (tag/multi-select list, e.g., 'React, Leadership'—auto-populate from career items if opted), Education (parallel form: {degree, school, dates, gpa optional, relevant_courses array}).",
+          "Career Sections: Separate addable items for jobs/internships/volunteer/hackathons/etc. Each as modal form: Title/Role (req), Company/Org (req), Location (opt), Dates (req: start/end pickers in MM/YYYY, auto-calc duration as '2y 3m'), Description (opt textarea, 2-4 sentences), Achievements/Bullets (opt array: simple list editor with placeholders like '• [Action] [Result]'), Skills Used (opt tags, e.g., comma-separated or dropdown). Save as nested JSON array in Supabase (e.g., {type: 'job', title: '...', achievements: ['• ...']}).",
+          "Optional Initial Upload: Parse existing resume PDF via Gemini API—prompt: 'Extract to structured JSON: {profile: {summary: str, skills: [str], education: [{degree: str, ...}], experiences: [{type: str, title: str, company: str, location: str, dates: {start: str, end: str, duration: str}, description: str, achievements: [str], skills_used: [str]}]}}'. Auto-populate profile sections; handle errors with 'Parsing partial—manual review?' fallback.",
+          "JD Upload & Generation: Upload job desc PDF/text; first parse JD via Gemini ('Extract key elements to JSON: {req_skills: [str], must_haves: [str], preferred: [str]}'); RAG: Embed/retrieve top 3-5 profile sections (experiences/education/skills/summary) via Gemini embeddings + cosine sim on JD keywords; feed retrieved chunks + full profile + JD extract to Gemini for tailored resume (e.g., 'Generate ATS-friendly resume: Match bullets to req_skills, quantify impacts, keep 1-page').",
+          "Resume Storage: Save generated resumes as JSON/PDF versions in Supabase (user-owned, e.g., {jd_hash: str, generated_at: date, content: obj}); no collab.",
+          "Export: Download as clean PDF via jsPDF (black text on white, no extras).",
+          "UI/Validation: Minimalist black palette (#000000 bg, #FFFFFF text, #333 accents); smooth 0.3s ease transitions on forms/modals/hovers (e.g., opacity fade on bullet edits). Form validation: Required fields, date chronology (start < end), no empty arrays. Subtle error toasts (e.g., 'Dates out of order'). Responsive for web/mobile.",
+          "Error Handling: Graceful fallbacks (e.g., offline queue for uploads, Gemini rate-limit retry, multi-JD as versions). Edge cases: Empty profile (prompt manual entry), partial parses (flag for review)."
+        ],
+        "tech_stack": {
+          "frontend": ["React", "Tailwind CSS (strict black-only theme)"],
+          "backend": ["Node.js", "Express (for API routes)"],
+          "ai_rag": ["Gemini API (for parsing, embeddings, generation)", "Simple RAG: Use Gemini embeddings for profile sections, retrieve top 3-5 matches via cosine similarity (implement with @google/generative-ai or basic in-memory vector store)"],
+          "auth": "Firebase Auth",
+          "database": "Supabase (Postgres for structured profile data like experiences/education tables, Storage for PDFs/exports)",
+          "other_tools": ["jsPDF for exports", "Vercel/Netlify for deploy", "date-fns for duration calcs"]
+        }
+      },
+      "constraints": {
+        "budget": "Free tier (Gemini/Firebase/Supabase limits)",
+        "scalability": "Low (personal use, <100 users)",
+        "platform": "Web (responsive for desktop/mobile)"
+      },
+      "output_format": {
+        "type": "step_by_step_plan",
+        "details": "Break into phases: 1. Setup (Firebase auth, Supabase schema—use Markdown tables for tables like 'experiences' with cols: id, user_id, type, title, etc.). 2. Frontend (Profile forms/UI components—key snippets for modals, validation with React Hook Form). 3. Backend (RAG/Gen routes—Node/Express examples for Gemini calls, embedding/retrieval func). 4. Integration (Upload parsing, JD flow, export). 5. Testing (Unit stubs: Mock RAG sim with sample data, parse sample PDF text, form validation). Include key code snippets (React components, Node routes, Gemini prompts). End with deploy checklist (env vars for APIs). Keep UI code ultra-minimal—no extras."
+      },
+      "examples": {
+        "similar_project": "Like a stripped-down Enhancv or Resume.io, but RAG-driven and black-only: Reference minimal resume builders like https://resumake.io (adapt to black theme)."
+      }
+    },
+    "usage_instructions": "Paste this into an AI: 'Build my resume app using this JSON prompt.' Expect a phased build guide with code."
+  }
+}
